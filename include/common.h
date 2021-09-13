@@ -10,7 +10,8 @@
 #include <stddef.h>
 #include <stdio.h>
 
-/*
+#include "tools.h"
+
 // OS name
 #ifdef _WIN32
 #define OS "Windows 32-bit"
@@ -27,12 +28,11 @@
 #else
 #define OS "Other"
 #endif
-*/
 
 // email
 #define EMAIL "sjoerd@marsenaar.com"
 
 // compiled file extension
-#define BINARY_EXTENSION "8px"
+#define BINARY_EXTENSION "8xp"
 
 #endif // !TI_COMMON_H

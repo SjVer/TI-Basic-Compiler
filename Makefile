@@ -4,7 +4,7 @@ INTERPRETER_NAME = int
 
 # compiler options
 CC = gcc
-CXXFLAGS = -std=c11 -Wall -lm
+CXXFLAGS = -std=c11 -Wall -lm -MMD
 LDFLAGS = 
 
 # command options
@@ -27,10 +27,11 @@ OBJS = $(addprefix $(OBJDIR)/, $(notdir $(patsubst %.c, %.o, $(SRCS))))
 COMPILER_BIN = $(BINDIR)/$(COMPILER_NAME)
 INTERPRETER_BIN = $(BINDIR)/$(INTERPRETER_NAME)
 
+
 # make stuff
 export COMPILER_NAME INTERPRETER_NAME CC CXXFLAGS LDFLAGS RM MKDIR 
 export MAKEDIR SRCDIR INCDIR BINDIR COMPILER_OBJDIR COMPILER_BIN 
-export INTERPRETER_OBJDIR INTERPRETER_BIN SRCS OBJS
+export INTERPRETER_OBJDIR INTERPRETER_BIN SRCS OBJS DEPS
 .MAIN: all
 all: compiler interpreter
 
@@ -38,6 +39,7 @@ YELLOW = \033[0;33m$$(tput bold)
 NC= \033[0m$$(tput sgr0)
 
 # targets
+
 # $(OBJS): $(SRCS) | makedirs
 $(OBJDIR)/%.o: $(SRCDIR)/%.c | makedirs
 	@printf "$(YELLOW)[general    ]$(NC) compiling $(YELLOW)$(notdir $<)$(NC) into $(YELLOW)$(notdir $@)$(NC)..."
@@ -73,3 +75,7 @@ guard-%: # make sure variable exists
 		echo "Environment variable $* not set (name=\"name\" and type=\"<empty>|interpreter|compiler\" required)"; \
 		exit 1; \
 	fi
+
+
+gentokenstrings:
+	@python3 $(MAINDIR)/make/gentokenstrings.py

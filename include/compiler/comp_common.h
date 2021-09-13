@@ -3,6 +3,7 @@
 
 #include "common.h"
 #include "chunk.h"
+#include "scanner.h"
 
 // name
 #ifndef COMP_NAME

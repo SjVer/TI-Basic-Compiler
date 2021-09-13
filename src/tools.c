@@ -3,7 +3,7 @@
 
 // reallocates memory of size newSize for pointer
 // if newSize is 0, pointer is freed
-void *reallocate(void *pointer, size_t oldSize, size_t newSize)
+void *reallocate(void *pointer, size_t newSize)
 {
     if (newSize == 0)
     {
@@ -12,11 +12,11 @@ void *reallocate(void *pointer, size_t oldSize, size_t newSize)
     }
 
     void *result = realloc(pointer, newSize);
+
     if (result == NULL)
     {
         // exit if we have no more memory available
-        fprintf(stderr, "MEMORY ALLOCATION FAILED! (From %d to %d)\n",
-            oldSize, newSize);
+        fprintf(stderr, "MEMORY ALLOCATION FAILED! (Asked for %d)\n", newSize);
         exit(1);
     }
     return result;
@@ -48,6 +48,15 @@ char *fstr(const char *format, ...)
     return buffer;
 }
 
+// returns the number of utf8 code points in the buffer at s
+size_t utf8len(char *s)
+{
+    size_t len = 0;
+    for (; *s; ++s) if ((*s & 0xC0) != 0x80) ++len;
+    return len;
+}
+
+// read constents of file to string
 char *readFile(const char *path)
 {
     FILE *file = fopen(path, "rb");
@@ -77,4 +86,12 @@ char *readFile(const char *path)
 
 	fclose(file);
 	return buffer;
+}
+
+// write word array to binary file with path
+void writeBinFile(const char *path, uint16_t *words, int wordCount)
+{
+    FILE *outfile = fopen(path, "wb");
+
+    fwrite(words, sizeof(uint16_t) * wordCount, 1, outfile);
 }

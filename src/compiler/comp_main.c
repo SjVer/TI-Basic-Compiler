@@ -25,7 +25,6 @@ static struct argp_option options[] = {
 		{0}
 };
 
-
 static error_t parse_opt(int key, char *arg, struct argp_state *state)
 {
 	struct arguments *arguments = state->input;
@@ -97,8 +96,13 @@ int main(int argc, char **argv)
 	}
 
 	char *src = readFile(arguments.args[0]);
+	
 	Chunk chunk;
+	initChunk(&chunk);
+	
 	int state = compileFromSrc(src, &chunk);
+
+	writeBinFile(arguments.outfile, chunk.words, chunk.count);
 
 	return state;
 }

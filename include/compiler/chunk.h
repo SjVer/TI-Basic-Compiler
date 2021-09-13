@@ -8,12 +8,12 @@ typedef struct
 {
     int count;
     int capacity;
-    uint8_t *code;
+    uint16_t *words;
     int *lines;
 } Chunk;
 
 void initChunk(Chunk *chunk);
-void writeChunk(Chunk *chunk, uint8_t byte, int line);
+void writeChunk(Chunk *chunk, uint16_t word, int line);
 void freeChunk(Chunk *chunk);
 
 #endif
