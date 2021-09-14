@@ -35,4 +35,8 @@
 // compiled file extension
 #define BINARY_EXTENSION "8xp"
 
+// binary file format stuff
+#define SIGNATURE (char *){"**TI83F*\x1a\n\0"}
+#define SIGNATURE_LEN 11
+
 #endif // !TI_COMMON_H

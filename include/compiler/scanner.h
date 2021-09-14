@@ -7,10 +7,10 @@ typedef enum
 {
     // one-byte tokens (0x00 - 0x7F)
 
-    TOKEN_DMS           = 0x01, // ►DMS
-    TOKEN_Dec           = 0x02, // ►Dec
-    TOKEN_Frac          = 0x03, // ►Frac
-    TOKEN__STO          = 0x04, // →
+    TOKEN_DMS           = 0x01, // >DMS
+    TOKEN_Dec           = 0x02, // >Dec
+    TOKEN_Frac          = 0x03, // >Frac
+    TOKEN__STO          = 0x04, // ->
     TOKEN_Boxplot       = 0x05, // Boxplot
     TOKEN__LBBRACE      = 0x06, // [
     TOKEN__RBBRACE      = 0x07, // ]
@@ -34,10 +34,10 @@ typedef enum
     TOKEN_ST_row_PL     = 0x18, // *row+(
     TOKEN_max           = 0x19, // max(
     TOKEN_min           = 0x1a, // min(
-    TOKEN_RPr           = 0x1b, // R►Pr(
-    TOKEN_RP0           = 0x1c, // R►Pθ(
-    TOKEN_PRx           = 0x1d, // P►Rx(
-    TOKEN_PRy           = 0x1e, // P►Ry(
+    TOKEN_RPr           = 0x1b, // R>Pr(
+    TOKEN_RP0           = 0x1c, // R>Ptheta(
+    TOKEN_PRx           = 0x1d, // P>Rx(
+    TOKEN_PRy           = 0x1e, // P>Ry(
     TOKEN_median        = 0x1f, // median(
     
     TOKEN_randM         = 0x20, // randM( 
@@ -83,10 +83,10 @@ typedef enum
 static char *TokenStrings[] =
 {
 	// tokens and their strings
-	[TOKEN_DMS]         = "►DMS",
-	[TOKEN_Dec]         = "►Dec",
-	[TOKEN_Frac]        = "►Frac",
-	[TOKEN__STO]        = "→",
+	[TOKEN_DMS]         = ">DMS",
+	[TOKEN_Dec]         = ">Dec",
+	[TOKEN_Frac]        = ">Frac",
+	[TOKEN__STO]        = "->",
 	[TOKEN_Boxplot]     = "Boxplot",
 	[TOKEN__LBBRACE]    = "[",
 	[TOKEN__RBBRACE]    = "]",
@@ -109,10 +109,10 @@ static char *TokenStrings[] =
 	[TOKEN_ST_row_PL]   = "*row+(",
 	[TOKEN_max]         = "max(",
 	[TOKEN_min]         = "min(",
-	[TOKEN_RPr]         = "R►Pr(",
-	[TOKEN_RP0]         = "R►Pθ(",
-	[TOKEN_PRx]         = "P►Rx(",
-	[TOKEN_PRy]         = "P►Ry(",
+	[TOKEN_RPr]         = "R>Pr(",
+	[TOKEN_RP0]         = "R>Ptheta(",
+	[TOKEN_PRx]         = "P>Rx(",
+	[TOKEN_PRy]         = "P>Ry(",
 	[TOKEN_median]      = "median(",
 	[TOKEN_randM]       = "randM(",
 	[TOKEN_mean]        = "mean(",

@@ -4,7 +4,7 @@ INTERPRETER_NAME = int
 
 # compiler options
 CC = gcc
-CXXFLAGS = -std=c11 -Wall -lm -MMD
+CXXFLAGS = -std=c11 -Wall -lm
 LDFLAGS = 
 
 # command options
@@ -76,6 +76,12 @@ guard-%: # make sure variable exists
 		exit 1; \
 	fi
 
+routine: compiler
+	@printf "$(YELLOW)compiling...\n$(NC)"
+	@$(COMPILER_BIN) test/test.ti -o $(BINDIR)/test.8xp
+	@printf "$(YELLOW)hexdump:\n$(NC)"
+	@hd $(BINDIR)/test.8xp
+	@#$(RM) $(BINDIR)/test.8xp
 
 gentokenstrings:
 	@python3 $(MAINDIR)/make/gentokenstrings.py

@@ -88,7 +88,7 @@ static bool match(TokenType type)
 
 // ------ compilation stuff --------
 
-int compileFromSrc(const char *src, Chunk *chunk)
+int compileFromSrc(const char *src, Chunk *chunk, bool verbose)
 {
     initScanner(src);
     parser.hadError = false;
@@ -96,12 +96,12 @@ int compileFromSrc(const char *src, Chunk *chunk)
     advance();
     while (!match(TOKEN__EOF) && !parser.hadError)
     {
-        if (parser.current.type != TOKEN__ERROR)
-            printf("Token: '%s' = %d\n", 
+        if (parser.current.type != TOKEN__ERROR && verbose)
+            printf("Token: '%s' = %d (0x%x)\n", 
 				TokenStrings[parser.current.type],
-				parser.current.type);
+				parser.current.type, parser.current.type);
 
-		writeChunk(chunk, (uint16_t)parser.current.type, parser.current.line);
+		writeChunk(chunk, (uint8_t)parser.current.type, parser.current.line);
 
 		advance();
 	}

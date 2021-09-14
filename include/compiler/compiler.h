@@ -3,6 +3,6 @@
 
 #include "comp_common.h"
 
-int compileFromSrc(const char *src, Chunk *chunk);
+int compileFromSrc(const char *src, Chunk *chunk, bool verbose);
 
 #endif

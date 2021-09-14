@@ -89,9 +89,22 @@ char *readFile(const char *path)
 }
 
 // write word array to binary file with path
-void writeBinFile(const char *path, uint16_t *words, int wordCount)
+void writeBinFile(const char *path, uint8_t *bytes, int byteCount)
 {
     FILE *outfile = fopen(path, "wb");
+    fwrite(bytes, sizeof(uint8_t) * byteCount, 1, outfile);
+    fclose(outfile);
+}
 
-    fwrite(words, sizeof(uint16_t) * wordCount, 1, outfile);
+// converts the given string to uppercase
+char *toUpper(const char *str)
+{
+    size_t l = strlen(str);
+    char *ret = malloc(l * sizeof (char));
+    const char OFFSET = 'a' - 'A';
+
+    for (int ch = 0; ch < l; ch++)
+        ret[ch] = (str[ch] >= 'a' && str[ch] <= 'z') ? str[ch] - OFFSET : str[ch];
+
+    return ret;
 }

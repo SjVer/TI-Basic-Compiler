@@ -24,6 +24,7 @@ void *reallocate(void *pointer, size_t newSize);
 char *fstr(const char *format, ...);
 size_t utf8len(char *s);
 char *readFile(const char *path);
-void writeBinFile(const char *path, uint16_t *words, int wordCount);
+void writeBinFile(const char *path, uint8_t *bytes, int byteCount);
+char *toUpper(const char *str);
 
 #endif
