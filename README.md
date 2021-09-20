@@ -1,2 +1,2 @@
-# TI-Basic-Interpreter
-A compiler and interpreter for the TI-Basic language
+# TI-Basic-Compiler
+A compiler for the TI-Basic language
